@@ -1,0 +1,49 @@
+body{
+    background-color: aliceblue;
+}
+.container{
+    width: 360px;
+    padding: 33px;
+    text-align: center;
+    background-color: white;
+    margin-left: 33%;
+    margin-top: 5px;
+}
+.inputs{
+    width: 270px;
+    padding: 8px;
+    border: 2px solid rgb(13, 72, 45);
+    outline: none;
+}
+.button{
+    width: 60px;
+    height: 41px;
+    background-color: rgb(5, 52, 15);
+    color: white;
+    cursor: pointer;
+    border-radius: 2px;
+    font-size: 19px;
+    outline: none;
+}
+.text ul{
+    position: relative;
+    background-color: rgb(30, 106, 106);
+    color: wheat;
+    padding: 7px;
+    font-size: 19px;
+    text-align: left;
+
+}
+.ul li{
+    list-style-type: none;
+}
+/* .text ul i{
+    position:relative;
+    background-color: rgb(14, 85, 26);
+    right: 10px;
+    cursor: pointer;
+} */
+/* .text ul i::before{
+    position: absolute;
+    right: 10px;
+} */

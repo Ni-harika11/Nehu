@@ -7,7 +7,7 @@ var Add=document.getElementById('submit') //Acess here  submit from
 var TodoList=document.getElementById('to-do-list') //Acess here Empty div which is store our all the tasks .
 
 let tasks=[];
-
+ 
 Add.addEventListener('click',(e)=>{///CLICK ONE Submit and
     e.preventDefault() ///Displaying result for long time 
     if(input.value.trim()==""){  ///if  user does't enter anything then it will show nothing. 

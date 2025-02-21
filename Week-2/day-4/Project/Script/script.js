@@ -1,47 +1,45 @@
-let URL="https://jsonplaceholder.typicode.com/users";
-fetch(URL)
+// let fatechData=fetch("https://jsonplaceholder.typicode.com/users/1")
+let fetechData=fetch("http://localhost:3000/user/1")
+fatechData.then(response => response.json())
+    .then(data => {
+        let rows = ''; // Declare `rows`/ before using it
 
-.then(function(){
-    console.log("getting data...")
+        data.forEach(user => {
+            rows += `<tr>
+                        <td>${user.id}</td>
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>
+                        <td>${user.address.street +" ", user.address.city}</td>
+                        <td>${user.phone}</td>
+                        <td>${user.website}</td>
+                       <td>${user.company.name}</td>
+                        <td>			
+                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+ 						<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+ 						</td>
+                    </tr>`;  
+                
+                
 });
-fetch(URL).catch(function(){
-    console.log("Getting Error...");
-});
-const table=document.querySelector("#table table-striped table-hover");
-fetch(URL)
-.then((response)=>{
-    return response.json();
-})
-.then((data)=>{
-    let fetdata=data;
-    fetdata.map(function(table){
 
-    });
-})
-// const apiurl="https://jsonplaceholder.typicode.com/users";
-// let getData=async()=>{
-//     console.log("Getting data.....");
-//     let fetdata=await fetch(URL)
-//     let data=fetdata.json();
-//     console.log(data)
-    
-// }
-// getData()
-// var table=document.querySelector("#table table-striped table-hover")
-// function createTable(data){
-//     data.forEach(element => {
-//         var id=table.insertRow(0);
-//         var name=row.insertCell(1);
-//         var email=row.insertCell(2);
-//         var address=row.insertCell(3);
-//         var phone=row.insertCell(4);
-//         var company=row.insertCell(5);
-//         table.appendChild(id)
-//         table.appendChild(name)
-//         table.appendChild(email)
-//         table.appendChild(address)
-//         table.append(phone)
-//         table.appendChild(company)
-//     });
-// }
-// createTable()
+// Ensure the table body exists before updating
+let tableBody = document.querySelector("tbody");
+if (tableBody) {
+            tableBody.innerHTML = rows;
+} else {
+            console.error("Table body not found!");
+        }
+ })
+.catch(error => console.error("Error fetching data:", error));//any errors that occur while fetching data from the API
+ 
+// //valid phone nnumber
+// /////Error messege
+    // let Numbers=document.getElementById("Number");
+    // function valid(Number){
+    //     const pattern=/^+[91]?[6789]\d{10}$/;
+    //     console.log(pattern)
+    //     return pattern.test(Numbers);
+    // }
+    // pattern.forEach(num=>{
+    //     console.log(`${num}`);
+    // });

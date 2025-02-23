@@ -1,28 +1,32 @@
 {
-    "user":[
-        {
-            "id":1,
-            "name":"Ervin Howell",
-            "email":"Shanna@melissa.tv",
-            "address":{
-                "street": "Victor Plains",
-                "house_no": "Suite 879",
-                "city": "Wisokyburgh",
-                "zipcode": "90566-7771"
-            },
-            "geo":{
-                "lat":"-43.9509",
-                "lng":"-34.4618"
-            },
-            "phone":"6734281945",
-            "website":"anastasia.net",
-            "company":{
-                "name":"Deckow-Crist",
-                "catchPhrase": "Proactive didactic contingency",
-                "bs": "synergize scalable supply-chains"
-            }
-        }
-
-        
-    ]
+  "user": [
+    {
+      "id": "1740333979745",
+      "name": "Niharika Malik",
+      "email": "malikniharika048@gmail.com",
+      "address": {
+        "city": "Baniatangi, Khorda"
+      },
+      "role": "Customer",
+      "phone": "7077237368",
+      "company": {
+        "website": "xzys",
+        "name": "Test"
+      }
+    },
+    {
+      "id": "1740334225963",
+      "name": "CSE-061 Niharika Malik",
+      "email": "malik@gmail.com",
+      "address": {
+        "city": "ODISHA\nIndia"
+      },
+      "role": "Customer",
+      "phone": "7077237368",
+      "company": {
+        "website": "xzysdd",
+        "name": "fvdgf,f"
+      }
+    }
+  ]
 }

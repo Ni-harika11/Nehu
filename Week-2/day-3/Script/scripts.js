@@ -1,3 +1,6 @@
+// a=int("1234567890")
+// res=(a(a+1))//2
+// print(res)
 // // let bts=document.getElementById("btn");
 // function  set_background(){
 //     var x=Math.floor(Math.random()*256);

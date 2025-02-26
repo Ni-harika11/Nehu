@@ -1,0 +1,32 @@
+{
+  "user": [
+    {
+      "id": "1740333979745",
+      "name": "Niharika Malik",
+      "email": "malikniharika048@gmail.com",
+      "address": {
+        "city": "Baniatangi, Khorda"
+      },
+      "role": "Customer",
+      "phone": "7077237368",
+      "company": {
+        "website": "xzys",
+        "name": "Test"
+      }
+    },
+    {
+      "id": "1740334225963",
+      "name": "CSE-061 Niharika Malik",
+      "email": "malik@gmail.com",
+      "address": {
+        "city": "ODISHA\nIndia"
+      },
+      "role": "Customer",
+      "phone": "7077237368",
+      "company": {
+        "website": "xzysdd",
+        "name": "fvdgf,f"
+      }
+    }
+  ]
+}

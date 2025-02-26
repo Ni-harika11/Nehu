@@ -4,20 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .from{
+            width: 200px;
+            height: 100px;
+            border: 2px solid black;
+            background-color: aquamarine;
+            border-radius: 5px;
+            /* display: flex;
+            align-items: center;
+            justify-content: center; */
+        }
+        .name{
+
+        }
+        
+    </style>
 </head>
 <body>
-      <form onsubmit="handlesubmite(event)">
+      <!-- <form onsubmit="handlesubmite(event)">
         <input type="text" placeholder="name" id="names">
         <input type="text" placeholder="password" id="password">
         <button type="submit">submit</button>
       </form>
+ -->
+    <form onsubmit="handle(event)" class="from">
+        <input type="text" placeholder="name" id="name"><br>
+        <input type="text" placeholder="email" id="email">
+        <button type="submit">submit</button>
+    </form>
+
+    <script>
+        const name=document.getElementById("name")
+        const email=document.getElementById("email")
+        function handle(event){
+            name.innerHTML="hello";
+        }
+    </script>
 
 
-
-
-
-
-
+ 
 
 
 

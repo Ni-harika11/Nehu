@@ -1,14 +1,16 @@
-const names=document.getElementById("names")
-const password=document.getElementById("password")
+// const names=document.getElementById("names")
+// const password=document.getElementById("password")
 
-function handlesubmite(e){
-    e.preventDefault()
-    console.log("working")
-    console.log(names.value)
-    console.log(password.value)
-}
+// function handlesubmite(e){
+//     e.preventDefault()
+//     console.log("working")
+//     console.log(names.value)
+//     console.log(password.value)
+// }
 
-
+////////
+const pattern=/very/g;
+var name="Niharika niharika malik malik"
 
 
 

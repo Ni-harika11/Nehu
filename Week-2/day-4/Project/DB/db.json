@@ -1,31 +1,70 @@
 {
   "user": [
     {
-      "id": "1740333979745",
-      "name": "Niharika Malik",
+      "id": "2d47",
+      "name": "krenmfnm er",
       "email": "malikniharika048@gmail.com",
       "address": {
         "city": "Baniatangi, Khorda"
       },
-      "role": "Customer",
+      "role": "Admin",
       "phone": "7077237368",
       "company": {
-        "website": "xzys",
-        "name": "Test"
+        "website": "rlmre",
+        "name": "rmfmv"
       }
     },
     {
-      "id": "1740334225963",
-      "name": "CSE-061 Niharika Malik",
-      "email": "malik@gmail.com",
+      "id": "8e53",
+      "name": "dm",
+      "email": "enfcnekj@gm.com",
       "address": {
-        "city": "ODISHA\nIndia"
+        "city": "ef,dm"
       },
       "role": "Customer",
       "phone": "7077237368",
       "company": {
-        "website": "xzysdd",
-        "name": "fvdgf,f"
+        "website": "dfmv",
+        "name": "dfvndkj"
+      }
+    },
+    {
+      "id": "c041",
+      "email": "enfcnekj@gm.com",
+      "password": "123"
+    },
+    {
+      "id": "4b32",
+      "email": "fghjk",
+      "password": "fghjk"
+    },
+    {
+      "id": "ceae",
+      "email": "",
+      "password": ""
+    },
+    {
+      "id": "7c5c",
+      "email": "nehu",
+      "password": "455555"
+    },
+    {
+      "id": "0289",
+      "email": "Niharika Malik",
+      "password": "363633"
+    },
+    {
+      "id": "85ae",
+      "name": "Niharika",
+      "email": "malikniharika048@gmail.com",
+      "address": {
+        "city": "Baniatangi, Khorda"
+      },
+      "role": "Admin",
+      "phone": "7077237368",
+      "company": {
+        "website": "dbjsbc",
+        "name": "ejfhjsd"
       }
     }
   ]

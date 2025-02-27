@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": "1312",
+      "names": "mdsmc",
+      "Emails": "msdnc@abs",
+      "Passwords": "123",
+      "Conf_Password": "123"
+    },
+    {
+      "id": "2603",
+      "names": "Niharika",
+      "Emails": "malikniharika048@gmail.com",
+      "Passwords": "12345",
+      "Conf_Password": "12345"
+    },
+    {
+      "id": "b858",
+      "names": "sdcjsdjcb",
+      "Emails": "asnjj@djcbscom",
+      "Passwords": "123",
+      "Conf_Password": "123"
+    }
+  ]
+}

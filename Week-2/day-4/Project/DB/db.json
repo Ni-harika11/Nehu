@@ -1,71 +1,94 @@
 {
   "user": [
     {
-      "id": "2d47",
-      "name": "krenmfnm er",
-      "email": "malikniharika048@gmail.com",
-      "address": {
-        "city": "Baniatangi, Khorda"
-      },
-      "role": "Admin",
-      "phone": "7077237368",
-      "company": {
-        "website": "rlmre",
-        "name": "rmfmv"
-      }
+      "id": "da29",
+      "name": "lkemd",
+      "password": "mfcdm"
     },
     {
-      "id": "8e53",
-      "name": "dm",
-      "email": "enfcnekj@gm.com",
-      "address": {
-        "city": "ef,dm"
-      },
-      "role": "Customer",
-      "phone": "7077237368",
-      "company": {
-        "website": "dfmv",
-        "name": "dfvndkj"
-      }
+      "id": "f6b8",
+      "name": "edesnm",
+      "password": "f rmd"
     },
     {
-      "id": "c041",
-      "email": "enfcnekj@gm.com",
-      "password": "123"
+      "id": "992d",
+      "name": "malikniharika048@gmail.com",
+      "password": "54321"
     },
     {
-      "id": "4b32",
-      "email": "fghjk",
-      "password": "fghjk"
+      "id": "3ec9",
+      "name": "efcn",
+      "password": "ebjds"
     },
     {
-      "id": "ceae",
-      "email": "",
-      "password": ""
+      "id": "bb05",
+      "name": "q5tyghjnm,ghjk567890",
+      "password": "vbnm"
     },
     {
-      "id": "7c5c",
-      "email": "nehu",
-      "password": "455555"
+      "id": "3c7e",
+      "name": "rjdjkenf",
+      "password": "46"
     },
     {
-      "id": "0289",
-      "email": "Niharika Malik",
-      "password": "363633"
+      "id": "f119",
+      "name": "rjdjkenfefmeklm",
+      "password": "46"
     },
     {
-      "id": "85ae",
-      "name": "Niharika",
-      "email": "malikniharika048@gmail.com",
-      "address": {
-        "city": "Baniatangi, Khorda"
-      },
-      "role": "Admin",
-      "phone": "7077237368",
-      "company": {
-        "website": "dbjsbc",
-        "name": "ejfhjsd"
-      }
+      "id": "a133",
+      "name": "rfnd",
+      "password": "fv df"
+    },
+    {
+      "id": "b6ff",
+      "name": "sdbjbcn",
+      "password": "dbcd  v"
+    },
+    {
+      "id": "61ce",
+      "name": "sdhfbhdc",
+      "password": "wdvghv"
+    },
+    {
+      "id": "1456",
+      "name": "dsmc mn",
+      "password": "sdmcnns"
+    },
+    {
+      "id": "81b7",
+      "name": "sdc nds",
+      "password": "smc nds"
+    },
+    {
+      "id": "302c",
+      "name": "mdmns",
+      "password": "ms cm"
+    },
+    {
+      "id": "65cb",
+      "name": "edcn",
+      "password": "cn"
+    },
+    {
+      "id": "145f",
+      "email": {},
+      "password": "fnvmdf"
+    },
+    {
+      "id": "4ac3",
+      "name": "kfndnk",
+      "password": "fnvmdf"
+    },
+    {
+      "id": "2fd6",
+      "email": {},
+      "password": "efnkmd"
+    },
+    {
+      "id": "c713",
+      "name": "rdfd",
+      "password": "efnkmd"
     }
   ]
 }

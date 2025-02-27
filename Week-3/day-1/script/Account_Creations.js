@@ -29,5 +29,4 @@ const Adduser=async()=>{
     e.preventDefault();
     registerUser();
   });
-
-
+  

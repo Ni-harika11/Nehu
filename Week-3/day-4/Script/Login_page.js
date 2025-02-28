@@ -1,55 +1,165 @@
 
-/////Loginpage///////
-const API_URL = "http://localhost:3000";
-const API_URL_USER = `${API_URL}/user`;
 
-const Login_From=document.getElementById('loginFormElement')
-Login_From.addEventListener('submit', async function (e) {
+const API_URL = "http://localhost:3000";
+const API_URL_USER = `${API_URL}/users`;
+
+
+
+document.addEventListener("DOMContentLoaded",function () {
+  const Login_Form = document.getElementById('loginFormElement');
+  let UserEmail = document.getElementById("login-username");
+  let UserPassword = document.getElementById("login-password");
+
+  Login_Form.addEventListener('submit',async function (e) {
     e.preventDefault(); // Prevent form from refreshing
-  
-    let Userename = document.getElementById("login-username");
-    let UserPassword = document.getElementById("login-password");
-  
-    const name = Userename.value.trim();
-    const password = UserPassword.value.trim();
-  
-    if (name=="" || password=="") {
+    //check for empty fields
+    console.log(UserEmail.value)
+  if (UserEmail.value.trim()=== "" || UserPassword.value.trim()=== "") {
       alert("Please fill in both fields");
       return;
-    }else if(!name==/^[A-Za-z]?/){
-      alert("Nmae must be Charters")
-      return false;
     }
+    //Email Validations 
+    const emailPatr = /^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z]+\.(com)$/;
 
-    try{
-      ///Featch alll user from the API
-      const response=await fetch(`${API_URL_USER}`);
-      if(!response.ok){
-        throw new Error("Failed to fetch users")
-      }
+   if (!emailPatr.test(UserEmail.value.trim())) {
+     alert("Please enter a valid email (e.g., example@domain.com)");
+     return;
+}
 
-      const users=await response.json();
 
-      //Find user with mathcing usernamea and password
-      const user = users.find(user => user.name === name && user.password === password);
-      if(user ){
-        handleUserRole(user);
-      }else{
-        alert("Invalid username or password");
-      }
-      
-    }catch (err) {
-      console.error("Login failed:", err.message);
-    }
-  });
-// Handle user role redirection
+    
+    // Fetch user data
+   await FetchDataFrom(UserEmail.value.trim(), UserPassword.value.trim());
+  })
+});
+
 function handleUserRole(user) {
-  if (user.role === "Admin" || user.role=="Super Admin") {
-    window.location.href = "../../day-4/Project/public/index.html";
+  if (user.role === "Admin" || user.role === "Super Admin") {
+    alert("Login successful! Redirecting to Admin dashboard...");
+    window.location.href="./Week-3/day-4/public/index.html"
+    // window.open("D:\COMPANY_WORK\Talentelgia\Nehu\Week-3\day-4\public\index.html", "_blank");
   } else if (user.role === "Customer") {
-    window.location.href = "customer_dashboard.html";
+    window.location.href = "./Week-3/day-4/public/customer.html";
     localStorage.setItem("username", user.username); // Store username in local storage
   }
 }
- 
- 
+
+//Fetch user data from API and Check password
+async function FetchDataFrom(email,password) {
+  try {
+    const response = await fetch(`${API_URL_USER}?email=${email}&password=${password}`);
+    const data = await response.json();
+    
+    if (data.length === 0) {
+      alert("User not found");
+      return;
+    }
+    const user=data[0]
+    if(user.password!==password){
+      alert("incorect password")
+      return ;
+    }
+     // Show success alert and handle redirection
+     alert("Login successful!");
+    handleUserRole(user);
+  } catch (error) {
+    console.error("Error fetching user data:")
+  }
+}
+
+
+//////modal data
+//store the data 
+const employeeForm=document.getElementById("employeeForm")
+employeeForm.addEventListener('submit',function(e){
+  e.preventDefault()
+  handleFormSubmission();
+});
+
+//collect from daat
+function getFormData(){
+  return{
+    fnam:document.getElementById('fname').value.trim(),
+    lname: document.getElementById('lname').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    address: document.getElementById('address').value.trim(),
+    password: document.getElementById('password').value.trim(),
+    role: document.getElementById('role').value,
+    phone: document.getElementById('phone').value.trim(),
+    website: document.getElementById('website').value.trim(),
+    company: document.getElementById('company').value.trim(),
+  };
+}
+///////Validate the form data
+function ValidateFormData(data) {
+  let isValid=true;
+//   if (data.fnam=="" ){
+//     document.getElementById("firstError").textContent="First  name are required"
+//     isValid=false;
+     
+//   }
+//   if (data.lname==""){
+//     document.getElementById("lastError").textContent=" Last name are required"
+//     isValid=false;
+     
+//   }
+//   const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+//   if (!pattern.test(data.email)) {
+//     document.getElementById("emailError").textContent = "Invalid email format.";
+//     isValid = false;
+// }
+
+//   const phonePattern = /^[6-9]\d{9}$/;
+//   if(phonePattern.test(data.phone)){
+//     document.getElementById("phoneError").textContent="Invalid Phone Number.";
+//     isValid=false;
+//   }
+//   if(data.password==""){
+//     document.getElementById("passwordError").textContent="Password must be required"
+//     isValid=false
+//   }
+  
+  return isValid;
+  
+  }
+
+///post data to JSON Server
+async function addUser(data) {
+  try{
+    const response=await fetch(API_URL_USER,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(data),
+    });
+    if(!response.ok){
+      alert("failed to add user")
+    }
+    alert("user added successfully");
+    employeeForm.reset()////clear the form
+    $('#addEmployeeModal').modal('hide') //close the modal
+  }catch(err){
+    console.log(err)
+    alter("Smoething went wrong . please try again.")
+  }
+  
+}
+
+////Handle form submisssion
+function handleFormSubmission(){
+  const formData=getFormData();
+
+  //clear priviou error messeage
+  clearErrors();
+
+  if (ValidateFormData(formData)){
+          addUser(formData)
+  }
+}
+
+//clear error meassgae
+function clearErrors( ) {
+  const errorId=['firstError',"lastError",'emailError','phoneError','passwordError']
+  errorId.forEach(id=>{
+    document.getElementById(id).textContent=""
+  });
+  }

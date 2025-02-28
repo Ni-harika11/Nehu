@@ -1,6 +1,6 @@
 const tableBody = document.querySelector("#user-table tbody");
 const API_URL = "http://localhost:3000";
-const API_URL_USER = `${API_URL}/user`;
+const API_URL_USER = `${API_URL}/users`;
 
 // Fetch data from API
 async function getData() {
@@ -190,7 +190,7 @@ function getUserData() {
     },
   };
 }
-// getUserData()
+
 
 ////When click edit it will  automatically fill the edit options all 
 function fillEditForm(user) {

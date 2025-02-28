@@ -35,11 +35,11 @@ document.addEventListener("DOMContentLoaded",function () {
 
 function handleUserRole(user) {
   if (user.role === "Admin" || user.role === "Super Admin") {
-    alert("Login successful! Redirecting to Admin dashboard...");
-    window.location.href="./Week-3/day-4/public/index.html"
-    // window.open("D:\COMPANY_WORK\Talentelgia\Nehu\Week-3\day-4\public\index.html", "_blank");
-  } else if (user.role === "Customer") {
-    window.location.href = "./Week-3/day-4/public/customer.html";
+    // alert("Login successful! Redirecting to Admin dashboard...");
+    // window.location.replace("/Week-3/day-4/public/index.html");
+    window.location.href="/Week-3/day-4/public/index.html"
+   } else if (user.role === "Customer") {
+    window.location.href = "/Week-3/day-4/public/customer.html";
     localStorage.setItem("username", user.username); // Store username in local storage
   }
 }
@@ -93,31 +93,31 @@ function getFormData(){
 ///////Validate the form data
 function ValidateFormData(data) {
   let isValid=true;
-//   if (data.fnam=="" ){
-//     document.getElementById("firstError").textContent="First  name are required"
-//     isValid=false;
+  if (data.fnam=="" ){
+    document.getElementById("firstError").textContent="First  name are required"
+    isValid=false;
      
-//   }
-//   if (data.lname==""){
-//     document.getElementById("lastError").textContent=" Last name are required"
-//     isValid=false;
+  }
+  if (data.lname==""){
+    document.getElementById("lastError").textContent=" Last name are required"
+    isValid=false;
      
-//   }
-//   const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-//   if (!pattern.test(data.email)) {
-//     document.getElementById("emailError").textContent = "Invalid email format.";
-//     isValid = false;
-// }
+  }
+  const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!pattern.test(data.email)) {
+    document.getElementById("emailError").textContent = "Invalid email format.";
+    isValid = false;
+}
 
-//   const phonePattern = /^[6-9]\d{9}$/;
-//   if(phonePattern.test(data.phone)){
-//     document.getElementById("phoneError").textContent="Invalid Phone Number.";
-//     isValid=false;
-//   }
-//   if(data.password==""){
-//     document.getElementById("passwordError").textContent="Password must be required"
-//     isValid=false
-//   }
+  const phonePattern = /^[6-9]\d{10}$/;
+  if(phonePattern.test(data.phone)){
+    document.getElementById("phoneError").textContent="Invalid Phone Number.";
+    isValid=false;     
+  }
+  if(data.password==""){
+    document.getElementById("passwordError").textContent="Password must be required"
+    isValid=false
+  }
   
   return isValid;
   

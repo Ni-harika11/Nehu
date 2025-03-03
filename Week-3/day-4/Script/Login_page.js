@@ -6,9 +6,9 @@ const API_URL_USER = `${API_URL}/users`;
 
 
 document.addEventListener("DOMContentLoaded",function () {
-  const Login_Form = document.getElementById('loginFormElement');
-  let UserEmail = document.getElementById("login-username");
-  let UserPassword = document.getElementById("login-password");
+  const Login_Form = document.getElementById('loginFormElement')  ;
+  let UserEmail = document.getElementById("loginFormElement")   ;
+  let UserPassword = document.getElementById("login-password") ;
 
   Login_Form.addEventListener('submit',async function (e) {
     e.preventDefault(); // Prevent form from refreshing

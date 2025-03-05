@@ -1,4 +1,3 @@
-"use strict";
 // const API_URL="http://localhost:3000";
 // const API_URL_USER=`${API_URL}/users`;
 // document.addEventListener("DOMContentLoaded",function(){
@@ -41,6 +40,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var _this = this;
 //     Login_Form.addEventListener('submit',async function (e:SubmitEvent)   {
 //         e.preventDefault()
 //         if(UserEmail.value.trim()==="" || UserEmail.value.trim()===""){
@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var loginForm = document.getElementById('loginFormElement');
     var userEmail = document.getElementById("login-email");
     var userPassword = document.getElementById("login-password");
-    loginForm.addEventListener('submit', function (e) { return __awaiter(void 0, void 0, void 0, function () {
+    loginForm.addEventListener('submit', function (e) { return __awaiter(_this, void 0, void 0, function () {
         var emailPattern;
         return __generator(this, function (_a) {
             switch (_a.label) {

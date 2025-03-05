@@ -1,178 +1,163 @@
-const API_URL="http://localhost:3000";
-const API_URL_USER=`${API_URL}/users`;
-document.addEventListener("DOMContentLoaded",function(){
-    const Login_Form=document.getElementById("loginFormElement") as HTMLFormElement;
-    let UserEmail=document.getElementById("loginFormElement") as HTMLInputElement ;
-    let UserPassword=document.getElementById("login-password") as HTMLInputElement;
+const API_URL: string = "http://localhost:3000";
+const API_URL_USER: string = `${API_URL}/users`;
 
-    Login_Form.addEventListener('submit',async function (e:SubmitEvent)   {
-        e.preventDefault()
-        if(UserEmail.value.trim()==="" || UserEmail.value.trim()===""){
-            alert("please fill in both fields");
-            return ;
-        }
-        //Email validations
-        const emailPatr=/^[a-zA-A0-9][._%+-]*@[a-zA-Z]+\.(com)$/;
-        if(!emailPatr.test(UserEmail.value.trim())){
-            alert("please enetr a valid email (e.g., example@domain.com)")
-            return ;
-        }
-        //fetch user data
-        await FetchDataFrom({email:UserEmail.value.trim(),
-             password:UserPassword.value.trim()}); 
-    })
+document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = document.getElementById('loginFormElement') as HTMLFormElement;
+  const userEmail = document.getElementById("login-email") as HTMLInputElement;
+  const userPassword = document.getElementById("login-password") as HTMLInputElement;
 
-});
-
-type User={
-    user:string;
-    role:string;
-    username:string;
-}
-function handleUserRole(user:User){
-    if(user.role==="Admin" || user.role==="Super Admin"){
-        window.location.href=""///Add path here
-    }else if(user.role==="Customer"){
-        window.location.href="/"//add path here
-        localStorage.setItem("username",user.username)// Store username in local storage
-    }
-}
-
-////Fetch user data from API and Check password
-type datas={
-    email:string;
-    password:string;
-}
-async function FetchDataFrom(val:datas) {
-    try{
-        const {email,password}=val;
-        const response=await fetch(`${API_URL_USER}?email=${email}&password=${password}`);
-        const data=await response.json();
-        if(data.length===0){
-            alert("User not found");
-            return ;
-        }
-        const user=data[0]
-        if(user.password!=password){
-            alert("incorect password")
-            return;
-        }
-        //show success alter and handle redirections
-        alert("login successful")
-        handleUserRole(user)
-    }catch(error){
-        console.log(error)
-    }
-}
-
-////////modal data
-//store the data 
-const employeeForm=document.getElementById("employeeForm") as HTMLFormElement;
-employeeForm.addEventListener('submit',function(e:SubmitEvent){
+  loginForm.addEventListener('submit', async (e: Event) => {
     e.preventDefault();
-    handleFormSubmission();
+    
+    if (!userEmail.value.trim() || !userPassword.value.trim()) {
+      alert("Please fill in both fields");
+      return;
+    }
+
+    const emailPattern = /^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z]+\.(com)$/;
+    if (!emailPattern.test(userEmail.value.trim())) {
+      alert("Please enter a valid email (e.g., example@domain.com)");
+      return;
+    }
+
+    await fetchDataFrom(userEmail.value.trim(), userPassword.value.trim());
+  });
 });
 
-///collect from data
-type AllData={
-    fname:string;
-    lname:string;
-    email:string;
-    address:string;
-    password:string;
-    role:string;
-    phone:string;
-    website:string;
-    company:string;
-
+type User ={
+  email: string;
+  password: string;
+  role: string;
+  username: string;
 }
-function getFormData():AllData{
+
+function handleUserRole(user: User): void {
+  if (user.role === "Admin" || user.role === "Super Admin") {
+    window.location.href = "/Week-3/day-4/public/index.html";
+  } else if (user.role === "Customer") {
+    window.location.href = "/Week-3/day-4/public/customer.html";
+    localStorage.setItem("username", user.username);
+  }
+}
+
+async function fetchDataFrom(email: string, password: string): Promise<void> {
+  try {
+    const response = await fetch(`${API_URL_USER}?email=${email}&password=${password}`);
+    const data: User[] = await response.json();
     
-        // const {fname,lname,email,address,password,role,phone,website,company}=va
-        return {
-            fname:(document.getElementById('fname') as HTMLInputElement).value.trim(),
-            lname:(document.getElementById('lname')as HTMLInputElement).value.trim(),
-            email:(document.getElementById('email')as HTMLInputElement).value.trim(),
-            address:(document.getElementById('address')as HTMLInputElement).value.trim(),
-            password:(document.getElementById('password') as HTMLInputElement).value.trim(),
-            role:(document.getElementById('role')as HTMLInputElement).value,
-            phone:(document.getElementById('phone')as HTMLInputElement).value.trim(),
-            website:(document.getElementById('website')as HTMLInputElement).value.trim(),
-            company:( document.getElementById('company')as HTMLInputElement).value.trim()
-        };
+    if (data.length === 0) {
+      alert("User not found");
+      return;
+    }
 
+    const user = data[0];
+    if (user.password !== password) {
+      alert("Incorrect password");
+      return;
+    }
+
+    alert("Login successful!");
+    handleUserRole(user);
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+  }
 }
 
-///Validate the from data
-function ValidateFormData(data:AllData):boolean{
-    let isValid=true;
-    if(data.fname==""){
-        const firstError=document.getElementById("firstError")
-        if(firstError) firstError.textContent="First name are required";
-        isValid=false;
-    }
-    if(data.lname==""){
-        const lastError=document.getElementById("lastError")
-        if(lastError)lastError.textContent="last nae is required";
-        isValid=false;
-    }
-    const phonePattern=/^[6-9]\d{10}$/;
-    if(!phonePattern.test(data.phone.trim())){
-        const phoneError=document.getElementById("phoneError")
-        if(phoneError)phoneError.textContent="Invalid Phone number";
-        isValid=false;
-    }
-    if(data.password.trim()==""){
-        const passwordError=document.getElementById("passwordError")
-        if(passwordError)passwordError.textContent="Password must be required"
-        isValid=false
-    }
-    return isValid;
-}
-///post data to JSON Server
-async function addUser(data:AllData) {
-    try{
-        const response=await fetch(API_URL_USER,{
-            method:"POST",
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify(data)
-        });
-        if(!response.ok){
-            alert("failed to add user")
-        }
-        alert("user added successfully")
-        employeeForm.reset();//clear the form
-        (document.getElementById('addEmployeeModal') as HTMLElement).style.display = 'none';
-  
-    }catch(err){
-        console.log(err)
-        alert("something went wrong . please try again.")
-    }
+const employeeForm = document.getElementById("employeeForm") as HTMLFormElement;
+employeeForm.addEventListener('submit', (e: Event) => {
+  e.preventDefault();
+  handleFormSubmission();
+});
+
+type UserData= {
+  fnam: string;
+  lname: string;
+  email: string;
+  address: string;
+  password: string;
+  role: string;
+  phone: string;
+  website: string;
+  company: string;
 }
 
-
-///Handle form submission
-
-function handleFormSubmission(){
-    const formData:AllData=getFormData();
-
-    //clear privieous error message
-    clearErrors();;
-
-    if(ValidateFormData(formData)){
-        addUser(formData)
-    }
+function getFormData(): UserData {
+  return {
+    fnam: (document.getElementById('fname') as HTMLInputElement).value.trim(),
+    lname: (document.getElementById('lname') as HTMLInputElement).value.trim(),
+    email: (document.getElementById('email') as HTMLInputElement).value.trim(),
+    address: (document.getElementById('address') as HTMLInputElement).value.trim(),
+    password: (document.getElementById('password') as HTMLInputElement).value.trim(),
+    role: (document.getElementById('role') as HTMLSelectElement).value,
+    phone: (document.getElementById('phone') as HTMLInputElement).value.trim(),
+    website: (document.getElementById('website') as HTMLInputElement).value.trim(),
+    company: (document.getElementById('company') as HTMLInputElement).value.trim(),
+  };
 }
 
+function validateFormData(data: FormData): boolean {
+  let isValid = true;
 
-//clear error meassage
-type Errors={
-    errorId:number;
-    id:number;
+  if (!data.fnam) {
+    document.getElementById("firstError")!.textContent = "First name is required";
+    isValid = false;
+  }
+  if (!data.lname) {
+    document.getElementById("lastError")!.textContent = "Last name is required";
+    isValid = false;
+  }
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!emailPattern.test(data.email)) {
+    document.getElementById("emailError")!.textContent = "Invalid email format.";
+    isValid = false;
+  }
+  const phonePattern = /^[6-9]\d{9}$/;
+  if (!phonePattern.test(data.phone)) {
+    document.getElementById("phoneError")!.textContent = "Invalid phone number.";
+    isValid = false;
+  }
+  if (!data.password) {
+    document.getElementById("passwordError")!.textContent = "Password is required";
+    isValid = false;
+  }
+
+  return isValid;
 }
-function clearErrors() {
-    const errorIds = ['firstError', 'lastError', 'emailError', 'phoneError', 'passwordError'];
-    errorIds.forEach((id) => {
-        (document.getElementById(id) as HTMLElement).textContent = "";
+
+async function addUser(data: FormData): Promise<void> {
+  try {
+    const response = await fetch(API_URL_USER, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
     });
+
+    if (!response.ok) {
+      alert("Failed to add user");
+      return;
+    }
+
+    alert("User added successfully");
+    employeeForm.reset();
+    ($('#addEmployeeModal') as any).modal('hide');
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong. Please try again.");
+  }
+}
+
+function handleFormSubmission(): void {
+  const formData = getFormData();
+  clearErrors();
+
+  if (validateFormData(formData)) {
+    addUser(formData);
+  }
+}
+
+function clearErrors(): void {
+  const errorIds = ['firstError', 'lastError', 'emailError', 'phoneError', 'passwordError'];
+  errorIds.forEach(id => {
+    document.getElementById(id)!.textContent = "";
+  });
 }

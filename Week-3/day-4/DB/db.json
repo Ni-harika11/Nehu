@@ -1,22 +1,6 @@
 {
   "users": [
     {
-      "id": "f2bb",
-      "fname": "Niharika",
-      "lname": "Malik",
-      "email": "malikniharika048@gmail.com",
-      "password": "1234",
-      "address": {
-        "city": "Baniatangi, Khorda"
-      },
-      "role": "Admin",
-      "phone": "7077237368",
-      "company": {
-        "website": "xzys.com",
-        "name": "zxy"
-      }
-    },
-    {
       "id": "bb1a",
       "fname": "sjdbvjdkbv",
       "lname": "knsfcfskdnv",

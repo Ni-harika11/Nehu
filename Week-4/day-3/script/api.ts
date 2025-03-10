@@ -1,0 +1,3 @@
+class APIData{
+    const loginForm=
+}

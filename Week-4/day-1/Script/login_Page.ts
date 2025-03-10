@@ -1,178 +1,163 @@
- 
+const API_URL: string = "http://localhost:3000";
+const API_URL_USER: string = `${API_URL}/users`;
 
-// const API_URL:string= "http://localhost:3000";
-// const API_URL_USER:string = `${API_URL}/users`;
+document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = document.getElementById('loginFormElement') as HTMLFormElement;
+  const userEmail = document.getElementById("login-email") as HTMLInputElement;
+  const userPassword = document.getElementById("login-password") as HTMLInputElement;
 
-
-// document.addEventListener("DOMContentLoaded",function () {
-//   const Login_Form = document.getElementById('loginFormElement') as HTMLElement ;
-//   let UserEmail = document.getElementById("login-username")  as HTMLInputElement;
-//   let UserPassword = document.getElementById("login-password") as HTMLInputElement;
-
-//   Login_Form.addEventListener('submit',async function (e) {
-//     e.preventDefault(); // Prevent form from refreshing
-//     //check for empty fields
-//     console.log(UserEmail.value)
-//   if (UserEmail.value.trim()=== "" || UserPassword.value.trim()=== "") {
-//       alert("Please fill in both fields");
-//       return;
-//     }
-//     //Email Validations 
-//     const emailPatr = /^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z]+\.(com)$/;
-
-//    if (!emailPatr.test(UserEmail.value.trim())) {
-//      alert("Please enter a valid email (e.g., example@domain.com)");
-//      return;
-// }
-
-
+  loginForm.addEventListener('submit', async (e: Event) => {
+    e.preventDefault();
     
-//     // Fetch user data
-//    await FetchDataFrom(UserEmail.value.trim(), UserPassword.value.trim());
-//   })
-// });
-// type User={
-//     user:string,
-//     role:string
-// }
-// function handleUserRole(user:User) {
-//   if (user.role === "Admin" || user.role === "Super Admin") {
-//     // alert("Login successful! Redirecting to Admin dashboard...");
-//     // window.location.replace("/Week-3/day-4/public/index.html");
-//     window.location.href="/Week-3/day-4/public/index.html"
-//    } else if (user.role === "Customer") {
-//     window.location.href = "/Week-3/day-4/public/customer.html";
-//     localStorage.setItem("username", user.username); // Store username in local storage
-//   }
-// }
+    if (!userEmail.value.trim() || !userPassword.value.trim()) {
+      alert("Please fill in both fields");
+      return;
+    }
 
-// //Fetch user data from API and Check password
-// async function FetchDataFrom(email:string,password:string) {
-//   try {
-//     const response = await fetch(`${API_URL_USER}?email=${email}&password=${password}`);
-//     const data = await response.json();
+    const emailPattern = /^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z]+\.(com)$/;
+    if (!emailPattern.test(userEmail.value.trim())) {
+      alert("Please enter a valid email (e.g., example@domain.com)");
+      return;
+    }
+
+    await fetchDataFrom(userEmail.value.trim(), userPassword.value.trim());
+  });
+});
+
+type User ={
+  email: string;
+  password: string;
+  role: string;
+  username: string;
+}
+
+function handleUserRole(user: User): void {
+  if (user.role === "Admin" || user.role === "Super Admin") {
+    window.location.href = "/Week-3/day-4/public/index.html";
+  } else if (user.role === "Customer") {
+    window.location.href = "/Week-3/day-4/public/customer.html";
+    localStorage.setItem("username", user.username);
+  }
+}
+
+async function fetchDataFrom(email: string, password: string): Promise<void> {
+  try {
+    const response = await fetch(`${API_URL_USER}?email=${email}&password=${password}`);
+    const data: User[] = await response.json();
     
-//     if (data.length === 0) {
-//       alert("User not found");
-//       return;
-//     }
-//     const user=data[0]
-//     if(user.password!==password){
-//       alert("incorect password")
-//       return ;
-//     }
-//      // Show success alert and handle redirection
-//      alert("Login successful!");
-//     handleUserRole(user);
-//   } catch (error) {
-//     console.error("Error fetching user data:")
-//   }
-// }
+    if (data.length === 0) {
+      alert("User not found");
+      return;
+    }
 
+    const user = data[0];
+    if (user.password !== password) {
+      alert("Incorrect password");
+      return;
+    }
 
-// //////modal data
-// //store the data 
-// const employeeForm=document.getElementById("employeeForm") as HTMLFormElement;
-// employeeForm.addEventListener('submit',function(e){
-//   e.preventDefault()
-//   handleFormSubmission();
-// });
+    alert("Login successful!");
+    handleUserRole(user);
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+  }
+}
 
-// //collect from daat
-// type values={
-//     fname:string,
-//     lname:string,
-//     email:string,
-//     address:string,
-//     password:string,
-//     role:string,
-//     website:string,
-//     phone:string,
-//     company:string
-// }
-// function getFormData():values{
-//   return{
-//     fname:document.getElementById('fname').value.trim(),
-//     lname: document.getElementById('lname').value.trim(),
-//     email: document.getElementById('email').value.trim(),
-//     address: document.getElementById('address').value.trim(),
-//     password: document.getElementById('password').value.trim(),
-//     role: document.getElementById('role').value,
-//     phone: document.getElementById('phone').value.trim(),
-//     website: document.getElementById('website').value.trim(),
-//     company: document.getElementById('company').value.trim(),
-//   };
-// }
-// ///////Validate the form data
-// function ValidateFormData(data) {
-//   let isValid=true;
-//   if (data.fnam=="" ){
-//     document.getElementById("firstError").textContent="First  name are required"
-//     isValid=false;
-     
-//   }
-//   if (data.lname==""){
-//     document.getElementById("lastError").textContent=" Last name are required"
-//     isValid=false;
-     
-//   }
-//   const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-//   if (!pattern.test(data.email)) {
-//     document.getElementById("emailError").textContent = "Invalid email format.";
-//     isValid = false;
-// }
+const employeeForm = document.getElementById("employeeForm") as HTMLFormElement;
+employeeForm.addEventListener('submit', (e: Event) => {
+  e.preventDefault();
+  handleFormSubmission();
+});
 
-//   const phonePattern = /^[6-9]\d{10}$/;
-//   if(phonePattern.test(data.phone)){
-//     document.getElementById("phoneError").textContent="Invalid Phone Number.";
-//     isValid=false;     
-//   }
-//   if(data.password==""){
-//     document.getElementById("passwordError").textContent="Password must be required"
-//     isValid=false
-//   }
-  
-//   return isValid;
-  
-//   }
+type UserData= {
+  fnam: string;
+  lname: string;
+  email: string;
+  address: string;
+  password: string;
+  role: string;
+  phone: string;
+  website: string;
+  company: string;
+}
 
-// ///post data to JSON Server
-// async function addUser(data) {
-//   try{
-//     const response=await fetch(API_URL_USER,{
-//       method:"POST",
-//       headers:{"Content-Type":"application/json"},
-//       body:JSON.stringify(data),
-//     });
-//     if(!response.ok){
-//       alert("failed to add user")
-//     }
-//     alert("user added successfully");
-//     employeeForm.reset()////clear the form
-//     $('#addEmployeeModal').modal('hide') //close the modal
-//   }catch(err){
-//     console.log(err)
-//     alter("Smoething went wrong . please try again.")
-//   }
-  
-// }
+function getFormData(): UserData {
+  return {
+    fnam: (document.getElementById('fname') as HTMLInputElement).value.trim(),
+    lname: (document.getElementById('lname') as HTMLInputElement).value.trim(),
+    email: (document.getElementById('email') as HTMLInputElement).value.trim(),
+    address: (document.getElementById('address') as HTMLInputElement).value.trim(),
+    password: (document.getElementById('password') as HTMLInputElement).value.trim(),
+    role: (document.getElementById('role') as HTMLSelectElement).value,
+    phone: (document.getElementById('phone') as HTMLInputElement).value.trim(),
+    website: (document.getElementById('website') as HTMLInputElement).value.trim(),
+    company: (document.getElementById('company') as HTMLInputElement).value.trim(),
+  };
+}
 
-// ////Handle form submisssion
-// function handleFormSubmission(){
-//   const formData=getFormData();
+function validateFormData(data: FormData): boolean {
+  let isValid = true;
 
-//   //clear priviou error messeage
-//   clearErrors();
+  if (!data.fnam) {
+    document.getElementById("firstError")!.textContent = "First name is required";
+    isValid = false;
+  }
+  if (!data.lname) {
+    document.getElementById("lastError")!.textContent = "Last name is required";
+    isValid = false;
+  }
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!emailPattern.test(data.email)) {
+    document.getElementById("emailError")!.textContent = "Invalid email format.";
+    isValid = false;
+  }
+  const phonePattern = /^[6-9]\d{9}$/;
+  if (!phonePattern.test(data.phone)) {
+    document.getElementById("phoneError")!.textContent = "Invalid phone number.";
+    isValid = false;
+  }
+  if (!data.password) {
+    document.getElementById("passwordError")!.textContent = "Password is required";
+    isValid = false;
+  }
 
-//   if (ValidateFormData(formData)){
-//           addUser(formData)
-//   }
-// }
+  return isValid;
+}
 
-// //clear error meassgae
-// function clearErrors( ) {
-//   const errorId=['firstError',"lastError",'emailError','phoneError','passwordError']
-//   errorId.forEach(id=>{
-//     document.getElementById(id).textContent=""
-//   });
-//   }
+async function addUser(data: FormData): Promise<void> {
+  try {
+    const response = await fetch(API_URL_USER, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      alert("Failed to add user");
+      return;
+    }
+
+    alert("User added successfully");
+    employeeForm.reset();
+    ($('#addEmployeeModal') as any).modal('hide');
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong. Please try again.");
+  }
+}
+
+function handleFormSubmission(): void {
+  const formData = getFormData();
+  clearErrors();
+
+  if (validateFormData(formData)) {
+    addUser(formData);
+  }
+}
+
+function clearErrors(): void {
+  const errorIds = ['firstError', 'lastError', 'emailError', 'phoneError', 'passwordError'];
+  errorIds.forEach(id => {
+    document.getElementById(id)!.textContent = "";
+  });
+}

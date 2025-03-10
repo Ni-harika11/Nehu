@@ -3,6 +3,22 @@ const loginTab = document.getElementById('loginTab') as HTMLButtonElement;
 const signupTab = document.getElementById('signupTab') as HTMLButtonElement;
 const loginForm = document.getElementById('loginForm') as HTMLFormElement;
 const signupForm = document.getElementById('signupForm') as HTMLFormElement;
+const btn=document.getElementById("button")as HTMLButtonElement;
+
+const email = document.getElementById('login-email') as HTMLInputElement;
+const emailError = document.getElementById('emailError') as HTMLSpanElement;
+
+const password=document.getElementById("login-password")as HTMLInputElement;
+const passworderror=document.getElementById("passwordError") as HTMLSpanElement;
+
+const confirmpass=document.getElementById("confirm-password")as HTMLInputElement;
+const confiPass=document.getElementById("confirmpasswordError") as HTMLSpanElement;
+
+const Email=email.value.trim();
+const Password=password.value.trim();
+const CPasword=confirmpass.value.trim();
+
+const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z]+\.(com)$/;
 
 // Event listeners for tab switching
 loginTab.addEventListener('click', () => {
@@ -18,25 +34,56 @@ signupTab.addEventListener('click', () => {
     signupTab.classList.add('border-blue-600');
     loginTab.classList.remove('border-blue-600');
 });
-////Validations for Login pages
-const button=document.getElementById("button")as HTMLButtonElement;
-const loginemail=(document.getElementById("login-email")as HTMLInputElement).value.trim()
-const loginpassword=(document.getElementById("login-password")as HTMLInputElement).value.trim();
-const confirmpassword=(document.getElementById("confirm-password")as HTMLInputElement).value.trim();
-button.addEventListener('click',async function (e:Event) {
-    e.preventDefault();
-    const emailError=(document.getElementById("emailError")as HTMLSpanElement);
-    const passwordError=(document.getElementById("passwordError")as HTMLSpanElement);
-    const confirmpasswordError=(document.getElementById("confirmpasswordError")as HTMLSpanElement);
-    const emailPatr = /^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z]+\.(com)$/;
-    
-    if(loginemail===""||loginpassword===""||confirmpassword===""){
-        button.disabled=true;
-        return ;
-    }
-    if(!emailPatr.test(loginemail)){
-        emailError.innerHTML="PLese enter a valid email (e.g., example@domain.com)";
-        loginemail.classList.add('border-red-500', 'shadow-lg', 'shadow-red-500/80');
-    }
 
-})
+// Email validation on form submit
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // if(Email===''&& Password===''&& CPasword===''){
+    //     btn.disabled=true;
+    //     btn.classList.add('bg-gray-400', 'cursor-not-allowed', 'opacity-50');
+    //     btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+         
+    // }else{
+    //     btn.disabled=false
+    //     btn.classList.remove('bg-gray-400', 'cursor-not-allowed', 'opacity-50');
+    //     btn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+
+    // }
+    if (!email || !emailError) return; // Ensure elements exist
+
+    const emailValue = email.value.trim();
+
+    if (emailValue === '') {
+        emailError.textContent = 'Email cannot be empty';
+        return;
+    }
+ 
+    if (!emailPattern.test(emailValue)) {
+        emailError.textContent = 'Invalid email format (e.g., example@domain.com)';
+        email.classList.add('border-red-500', 'shadow-2xl', 'shadow-red-600/90', 'ring-2', 'ring-red-500');
+        // email.classList.add('border-red-500', 'shadow-lg', 'shadow-red-500/80');hover:shadow-md hover:shadow-blue-500/50 'shadow-red-600/90',
+        return;
+    } else {
+        // Remove error styles if the email is valid
+        email.classList.remove('border-red-500', 'shadow-lg', 'shadow-red-500/80');
+    }
+    
+
+    emailError.textContent = ''; // Clear error if valid
+    console.log('Form submitted successfully with Email:', emailValue);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 

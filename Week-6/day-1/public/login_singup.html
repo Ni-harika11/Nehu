@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
     <title>Split Screen Forms</title>
 </head>
@@ -24,19 +25,19 @@
             <h2 class="text-2xl font-bold text-center mb-4">Login</h2>
             <div>
                 <label for="login-email" class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="email" id="login-email" class="w-full p-2 border rounded-lg" placeholder="name@company.com" required>
+                <input type="email" id="login-email" class="w-full p-2 border  rounded-lg" placeholder="name@company.com"    >
                 <span id="emailError" class="text-red-500"></span>
 
             </div>
             <div>
                 <label for="login-password" class="block text-sm font-medium text-gray-700">Password</label>
-                <input type="password" id="login-password" class="w-full p-2 border rounded-lg" placeholder="••••••••" required>
+                <input type="password" id="login-password" class="w-full p-2 border rounded-lg" placeholder="••••••••"   >
                 <span id="passwordError" class="text-red-500"></span>
 
             </div>
-            <div>
+            <div> 
                 <label for="confirm-password" class="block text-sm font-medium text-gray-700">Confirm  Password</label>
-                <input type="password" id="confirm-password" class="w-full p-2 border rounded-lg" placeholder="••••••••" required>
+                <input type="password" id="confirm-password" class="w-full p-2 border rounded-lg" placeholder="••••••••"  >
                 <span id="confirmpasswordError" class="text-red-500"></span>
 
             </div>
@@ -48,15 +49,15 @@
             <h2 class="text-2xl font-bold text-center mb-4">Signup</h2>
             <div>
                 <label for="signup-name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                <input type="text" id="signup-name" class="w-full p-2 border rounded-lg" placeholder="Your Name" required>
+                <input type="text" id="signup-name" class="w-full p-2 border rounded-lg" placeholder="Your Name" >
             </div>
             <div>
                 <label for="signup-email" class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="email" id="signup-email" class="w-full p-2 border rounded-lg" placeholder="name@company.com" required>
+                <input type="email" id="signup-email" class="w-full p-2 border rounded-lg" placeholder="name@company.com"   autocomplete="new-email" >
             </div>
             <div>
                 <label for="signup-password" class="block text-sm font-medium text-gray-700">Password</label>
-                <input type="password" id="signup-password" class="w-full p-2 border rounded-lg" placeholder="••••••••" required>
+                <input type="password" id="signup-password" class="w-full p-2 border rounded-lg" placeholder="••••••••"  autocomplete="new-password" >
             </div>
             <button type="submit" class="w-full bg-green-600 text-white p-2 rounded-lg hover:bg-green-700">Signup</button>
         </form>
@@ -64,6 +65,7 @@
     </div>
     </div>
     <script src="../dist/login_singup.js"></script>
-    <script src="../dist/signIn.js" defer></script>
+    <script src="../dist/signIn.js" ></script>
+     <!-- <script src="../dist/login_singup.js"></script> -->
 </body>
 </html>

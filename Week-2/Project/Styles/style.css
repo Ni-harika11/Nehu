@@ -1,0 +1,57 @@
+
+body{
+    background-color: aliceblue;
+
+}
+.main{
+    width: 360px;
+    padding: 33px;
+    text-align: center;
+    background-color: white;
+    margin-left: 33%;
+    margin-top: 5px;
+    border: 2px solid rgb(11, 7, 16);
+}
+.inputs{
+    width: 270px;
+    padding: 8px;
+    border: 2px solid rgb(13, 72, 45);
+     outline: none;  
+}  
+div  li{
+    list-style-type: none;
+    position: relative;
+    background-color: rgb(30, 106, 106);
+    color: wheat;
+    padding: 7px;
+    font-size: 19px;
+    text-align: left;
+}
+.submit{
+    width: 60px;
+    height: 41px;
+    background-color: rgb(5, 52, 15);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 19px;
+    outline: none;
+}
+.to-do-list{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+}
+.to-do-list li{
+    
+        position: relative;
+        display: flex;
+        flex-grow: 2;
+        /* justify-content: space-between; */
+        background-color: rgb(30, 106, 106);
+        color: wheat;
+        padding: 7px;
+        font-size: 19px;
+        text-align: left;    
+}

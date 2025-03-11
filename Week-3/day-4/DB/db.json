@@ -1,0 +1,71 @@
+{
+  "users": [
+    {
+      "id": "f2bb",
+      "fname": "Niharika",
+      "lname": "Malik",
+      "email": "malikniharika048@gmail.com",
+      "password": "1234",
+      "address": {
+        "city": "Baniatangi, Khorda"
+      },
+      "role": "Admin",
+      "phone": "7077237368",
+      "company": {
+        "website": "xzys.com",
+        "name": "zxy"
+      }
+    },
+    {
+      "id": "bb1a",
+      "fname": "sjdbvjdkbv",
+      "lname": "knsfcfskdnv",
+      "email": "sdfmndsk@awdms",
+      "address": {
+        "city": ",dcdxv"
+      },
+      "role": "Admin",
+      "phone": "7833249832",
+      "company": {
+        "website": "snfndk",
+        "name": ",d vdf"
+      }
+    },
+    {
+      "id": "11e9",
+      "fnam": "Niharika",
+      "lname": "Malik",
+      "email": "maik8@gmail.com",
+      "address": "Baniatangi, Khorda",
+      "password": "9876",
+      "role": "Customer",
+      "phone": "7987637368",
+      "website": "xzysdd",
+      "company": "uhihhj"
+    },
+    {
+      "id": "3c6b",
+      "fnam": "dhdbjbd",
+      "lname": "scnxc",
+      "email": "scmzx@sbch",
+      "address": "dc xcxmmdskjds",
+      "password": "7777",
+      "role": "Super Admin",
+      "phone": "8679876543",
+      "website": "mdnmcn",
+      "company": "uhihhj"
+    },
+    {
+      "id": "f1b7",
+      "fnam": "wndxm",
+      "lname": "tjyt",
+      "email": "rijnejw@jken.com",
+      "address": "emfer",
+      "password": "4567",
+      "role": "Customer",
+      "phone": "6789087654",
+      "website": "xzysdd",
+      "company": "fvdgf,f"
+    }
+  ]
+}

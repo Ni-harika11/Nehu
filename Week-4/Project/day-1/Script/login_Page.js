@@ -249,6 +249,7 @@ async function FetchDataFrom(email,password) {
         icon: "success"
       });
      }
+     alter("sucessfully")
     handleUserRole(user);
   } catch (error) {
     console.error("Error fetching user data:")

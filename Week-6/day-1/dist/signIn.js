@@ -11,7 +11,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const API_User = `http://localhost:3000/user`;
 // Get the form element
 const signUpForm = document.getElementById("signUpForm");
-// Add submit event listener
 signUpForm.addEventListener("submit", function (e) {
     e.preventDefault();
     handleFormSubmission();
@@ -48,7 +47,7 @@ function addUser(data) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const response = yield fetch(API_User, {
-                method: 'POST',
+                method: 'PUT',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
             });
@@ -71,56 +70,3 @@ function handleFormSubmission() {
         addUser(formData);
     }
 }
-// Define the structure for user form data
-// interface UserFormData {
-//     fname: string;
-//     lname: string;
-//     email: string;
-//     password: string;
-// }
-// Function to collect form data
-// function getFormData(): UserFormData {
-// const fname = (document.getElementById('fname') as HTMLInputElement).value.trim();
-// const lname = (document.getElementById('lname') as HTMLInputElement).value.trim();
-// const email = (document.getElementById('email') as HTMLInputElement).value.trim();
-// const password = (document.getElementById('password') as HTMLInputElement).value.trim();
-//     if (!fname || !lname || !email || !password) {
-//         throw new Error('All fields are required');
-//     }
-//     return { fname, lname, email, password };
-// }
-// Function to submit form data to JSON server
-// async function submitFormData(formData: UserFormData): Promise<void> {
-//     try {
-//         console.log('Sending form data:', formData);
-//         const response = await fetch('http://localhost:3000/user', {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify(formData)
-//         });
-//         if (!response.ok) {
-//             throw new Error('Failed to save user data');
-//         }
-//         const result = await response.json();
-//         console.log('User added:', result);
-//         alert('User signed in successfully and saved to db.json!');
-//     } catch (error) {
-//         console.error('Error:', (error as Error).message);
-//         alert('Failed to save user data.');
-//     }
-// }
-// Add event listener for form submission
-// const form = document.querySelector('form');
-// if (form) {
-//     form.addEventListener('submit', async (e: Event) => {
-//         e.preventDefault();
-//         try {
-//             const formData = getFormData();
-//             await submitFormData(formData);
-//         } catch (error) {
-//             alert((error as Error).message);
-//         }
-//     });
-// } else {
-//     console.error('Form element not found');
-// }

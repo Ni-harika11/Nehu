@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": "6fbf",
+      "fnam": "Niharika",
+      "lname": "Malik",
+      "email": "malikniharika048@gmail.com",
+      "address": "Baniatangi, Khorda",
+      "password": "1234",
+      "role": "Admin",
+      "phone": "7077237368",
+      "website": "xzys",
+      "company": "Test"
+    }
+  ]
+}

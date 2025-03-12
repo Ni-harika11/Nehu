@@ -330,7 +330,7 @@ async function addUser(data) {
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(data),
     });
-    if(!response.ok){
+    if(!response.ok){ 
       alert("failed to add user")
     }
     alert("user added successfully");

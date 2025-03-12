@@ -96,14 +96,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const EError = document.getElementById("EError");
     const PError = document.getElementById("PError");
     const CError = document.getElementById("CError");
-    //   // declare const Swal: any;
     const isString = (value) => /^[A-Za-z]+$/.test(value);
     const validate = () => {
+        console.log(fname.value.trim());
+        console.log(lname.value.trim());
+        console.log(email.value.trim());
+        console.log(password.value.trim());
+        console.log(cpassword.value.trim());
         let isValid = true;
         if (!isString(fname.value)) {
             fError.textContent = "First name must be a string";
             fname.style.borderColor = "red";
             isValid = false;
+            console.log(fname.value.trim());
         }
         else {
             fError.textContent = "";

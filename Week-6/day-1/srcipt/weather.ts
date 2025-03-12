@@ -117,13 +117,18 @@ function getWeatherIcon(condition: string): string {
 }
 
 const searchInput = document.getElementById('Search') as HTMLInputElement;
-
+const favlist=document.getElementById("heart")as HTMLInputElement
 searchInput.addEventListener('input', () => {
     const city = searchInput.value.trim();
+    favlist.style.display="none";
     if (city.length > 2) {
         fetchWeather(city);
+        favlist.style.display = 'block';
+    }else{
+         favlist.style.display = 'none';
     }
 });
+// favlist.style.display = city.length > 2 ? 'block' : 'none';
 
 
 

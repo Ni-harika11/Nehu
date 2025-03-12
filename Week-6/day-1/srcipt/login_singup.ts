@@ -12,7 +12,7 @@ loginTab.addEventListener('click', () => {
     loginTab.classList.add('border-blue-600');
     signupTab.classList.remove('border-blue-600');
 });
-
+ 
 signupTab.addEventListener('click', () => {
     signupForm.classList.remove('hidden');
     loginForm.classList.add('hidden');
@@ -103,14 +103,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const EError = document.getElementById("EError") as HTMLSpanElement;
   const PError = document.getElementById("PError") as HTMLSpanElement;
   const CError = document.getElementById("CError") as HTMLSpanElement;
+ 
   const isString = (value: string): boolean => /^[A-Za-z]+$/.test(value);
   const validate = () => {
+    console.log(fname.value.trim())
+    console.log(lname.value.trim()) 
+    console.log(email.value.trim())
+    console.log(password.value.trim())
+    console.log(cpassword.value.trim())
     let isValid = true;
 
     if (!isString(fname.value)) {
       fError.textContent = "First name must be a string";
       fname.style.borderColor = "red";
       isValid = false;
+      console.log(fname.value.trim())
     } else {
       fError.textContent = "";
       fname.style.borderColor = "";

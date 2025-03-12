@@ -1,6 +1,7 @@
 //form validations login and sigup pages or tabes
 // TypeScript Signup Form
-const API_URL_USER=`http://localhost:3000`
+const API_URL = "http://localhost:3000";
+const API_URL_USER = `${API_URL}/user`;
 const loginTab = document.getElementById('loginTab') as HTMLButtonElement;
 const signupTab = document.getElementById('signupTab') as HTMLButtonElement;
 const loginForm = document.getElementById('loginForm') as HTMLFormElement;
@@ -12,7 +13,7 @@ loginTab.addEventListener('click', () => {
     loginTab.classList.add('border-blue-600');
     signupTab.classList.remove('border-blue-600');
 });
- 
+//Tab
 signupTab.addEventListener('click', () => {
     signupForm.classList.remove('hidden');
     loginForm.classList.add('hidden');
@@ -77,10 +78,6 @@ function validateForm(): void {
   }
 }
 
-// // Add event listeners
-email.addEventListener('input', validateForm);
-password.addEventListener('input', validateForm);
-confirmPassword.addEventListener('input', validateForm);
 
 // // Prevent form submission for now
 form.addEventListener('submit', (e: Event) => {
@@ -88,6 +85,45 @@ form.addEventListener('submit', (e: Event) => {
   alert('Form submitted successfully!');
   window.location.reload();
 });
+////Check User is Available or not
+type LoginData={
+  email:string;
+  password:string;
+}
+async function FetchDataFrom(userData:LoginData) {
+  try{
+    const response=await fetch(`${API_URL_USER}?email=${email}$password=${password}`);
+    const data=await response.json();
+    if(data.length===0){
+      window.location.reload();
+      return;
+    }
+    const user=data[0]
+    if(user.password!==password){
+      alert('Login successful! Redirecting...');
+      window.location.href = '';
+      return;
+    }else{
+      alert("Invalid password . please try again.")
+    }
+    alert("sucessfull")
+  }catch(error){
+    alert("try again")
+  }
+}
+
+// Handle form submission
+form.addEventListener('submit', (e: Event) => {
+  e.preventDefault();
+  FetchDataFrom(email.value.trim(),password.value.trim());
+});
+
+// // Add event listeners
+email.addEventListener('input', validateForm);
+password.addEventListener('input', validateForm);
+confirmPassword.addEventListener('input', validateForm);
+
+
 
 // /////////////////signup page validations//////////////
 document.addEventListener("DOMContentLoaded", () => {
@@ -166,18 +202,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener("input", validate);
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async(e:Event) => {
     e.preventDefault();
     if (!btn.disabled) {
-      alert("Form submitted successfully!");
-      loginForm.classList.remove('hidden');
-      signupForm.classList.add('hidden');
-      loginTab.classList.add('border-blue-600');
-      signupTab.classList.remove('border-blue-600');
+      const userData={
+        firstName:fname.value.trim(),
+        lastName:lname.value.trim(),
+        email:email.value.trim(),
+        password:password.value.trim(),
+      };
+      try {
+        const response = await fetch(API_URL_USER, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        });
+        if(response.ok){
+          alert("User registered successfully!");
+          form.reset();
+          btn.disabled=true;
+          btn.style.backgroundColor="gray";
+        }else{
+          alert("Failed to register user!");
+        }
+      // alert("Form submitted successfully!");
+      // loginForm.classList.remove('hidden');
+      // signupForm.classList.add('hidden');
+      // loginTab.classList.add('border-blue-600');
+      // signupTab.classList.remove('border-blue-600');
+    }catch(error){
+      alert("An error occurred while registering the user.");
     }
-    window.location.reload();
+  }
+    // window.location.reload();
   });
 });
+// type UserDatas={
+  
+// }
+// function handleUserRole(user:string) {
+//   if (user.role === "Admin" || user.role === "Super Admin") {
+//     window.location.href="/Week-3/day-4/public/index.html"
+//    } else if (user.role === "Customer") {
+//     window.location.href = "/Week-3/day-4/public/customer.html";
+//     localStorage.setItem("username", user.username); // Store username in local storage
+//   }
+// }
 
 
 

@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const API_KEY = 'X54FZATHSVT32LGAGJRJXDJYX';
-const API_URL = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/';
+const API_URLS = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/';
 // // Function to fetch weather data for a given city
 function fetchWeather(city) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -108,3 +108,4 @@ searchInput.addEventListener('input', () => {
         favlist.style.display = 'none';
     }
 });
+// favlist.style.display = city.length > 2 ? 'block' : 'none';

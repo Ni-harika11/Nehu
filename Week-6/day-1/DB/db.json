@@ -1,4 +1,20 @@
 {
-  "user": [],
-  "wishlist": []
+  "user": [
+    {
+      "id": "7244",
+      "firstName": "Niharika",
+      "lastName": "Malik",
+      "email": "qwm@wed.com",
+      "password": "111111",
+      "confirmpassd": ""
+    },
+    {
+      "id": "b059",
+      "firstName": "asdn",
+      "lastName": "ASKN",
+      "email": "ASDN@WD.com",
+      "password": "123456"
+    }
+  ],
+  "wishlist":[]
 }

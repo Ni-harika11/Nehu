@@ -1,5 +1,5 @@
 const API_KEY: string = 'X54FZATHSVT32LGAGJRJXDJYX';
-const API_URL: string = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/';
+const API_URLS: string = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/';
 
 // Interface for the overall weather data response
 interface WeatherData {

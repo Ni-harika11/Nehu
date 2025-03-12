@@ -1,3 +1,9 @@
 {
-    "liveServer.settings.port": 5502
-}
+    "someSetting": true,
+  <<<<<<< HEAD
+    "mainBranchSetting": "value"
+  =======
+    "week5BranchSetting": "value"
+  >>>>>>> Week-5
+  }
+  

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use stric"
 //TypesAlieas
 type User={
@@ -57,3 +58,7 @@ export{}
 //     console.log(`Hello ${person} , today is ${date}`)
 // }
 // greetings("niharika",435)
+=======
+let message:string='Hello world';
+console.log(message)
+>>>>>>> week-5

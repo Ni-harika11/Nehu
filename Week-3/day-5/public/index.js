@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use strict";
 "use stric";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -37,3 +38,7 @@ creatUser("niharika", "snds@md.cm", true);
 //     console.log(`Hello ${person} , today is ${date}`)
 // }
 // greetings("niharika",435)
+=======
+var message = 'Hello world';
+console.log(message);
+>>>>>>> week-5

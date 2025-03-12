@@ -211,6 +211,7 @@ async function updateUser(userId, updatedData) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(updatedData),
   });
+<<<<<<< HEAD
   if(!response.ok){
     const error=await response.json();
     console.error(error.message)
@@ -232,6 +233,20 @@ async function handleEditFormSubmit(event, userId) {
   event.preventDefault();
   try {
     const updatedUser = getUserData();
+=======
+}
+////affter the sucessfully editied --remove from backend
+function closeEditModal() {
+  document.getElementById("employeeForm").reset();
+  document.getElementById("addEmployeeModal").classList.remove("show");
+  document.querySelector(".modal-backdrop").remove();
+}
+
+async function handleEditFormSubmit(event, userId) {
+  event.preventDefault();
+  try {
+    const updatedUser = getUserFormData();
+>>>>>>> week-5
     await updateUser(userId, updatedUser);
     closeEditModal();
     await renderData();
@@ -243,7 +258,11 @@ async function handleEditFormSubmit(event, userId) {
 
 // Attach event listener to form for edit (dynamic)
 function attachEditFormListener(userId) {
+<<<<<<< HEAD
   const form = document.getElementById("editUsersModal");
+=======
+  const form = document.getElementById("employeeForm");
+>>>>>>> week-5
   form.onsubmit = (event) => handleEditFormSubmit(event, userId);
 }
 
@@ -254,9 +273,12 @@ function editUser(userId) {
     .then((user) => {
       fillEditForm(user);
       attachEditFormListener(userId);
+<<<<<<< HEAD
       //show the modal after filling the from
       document.getElementById("editUsersModal").classList.add("show")
       document.body.classList.add("modal-open")
+=======
+>>>>>>> week-5
     })
     .catch((err) => console.error("Error fetching user data:", err));
 }

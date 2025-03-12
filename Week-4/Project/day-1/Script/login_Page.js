@@ -271,11 +271,11 @@ function handleUserRole(user) {
 //store the data 
 const employeeForm=document.getElementById("employeeForm")
 employeeForm.addEventListener('submit',function(e){
-  e.preventDefault()
+  e.preventDefault() 
   handleFormSubmission();
 });
 
-//collect from daat
+//collect from data
 function getFormData(){
   return{
     fnam:document.getElementById('fname').value.trim(),

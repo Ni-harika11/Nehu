@@ -1,9 +1,8 @@
 {
-    "someSetting": true,
-  <<<<<<< HEAD
-    "mainBranchSetting": "value"
-  =======
-    "week5BranchSetting": "value"
-  >>>>>>> Week-5
-  }
-  
+  "someSetting": true,
+<<<<<<< HEAD
+  "mainBranchSetting": "value"
+=======
+  "week5BranchSetting": "value"
+>>>>>>> Week-5
+}

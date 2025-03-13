@@ -86,31 +86,57 @@ form.addEventListener('submit', (e: Event) => {
   window.location.reload();
 });
 ////Check User is Available or not
-type LoginData={
-  email:string;
-  password:string;
-}
-async function FetchDataFrom(userData:LoginData) {
-  try{
-    const response=await fetch(`${API_URL_USER}?email=${email}$password=${password}`);
-    const data=await response.json();
-    if(data.length===0){
+async function FetchDataFrom(email: string, password: string) {
+  try {
+    const response = await fetch(`${API_URL_USER}?email=${email}&password=${password}`);
+    const data = await response.json();
+
+    console.log('API response:', data); // Check the API data structure
+
+    // Check if user exists
+    if (data.length === 0) {
+      alert('User not found. Please sign up.');
       window.location.reload();
       return;
     }
-    const user=data[0]
-    if(user.password!==password){
+
+    const user = data[0];
+
+    // Validate email and password
+    if (user.password === password && user.email === email) {
       alert('Login successful! Redirecting...');
-      window.location.href = '';
-      return;
-    }else{
-      alert("Invalid password . please try again.")
+      window.location.href = '../public/weather.html'; // Ensure file name is correct
+    } else {
+      alert('Invalid password. Please try again.');
     }
-    alert("sucessfull")
-  }catch(error){
-    alert("try again")
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    alert('An error occurred. Please try again.');
   }
 }
+
+// async function FetchDataFrom(email:string,password:string) {
+//   try{
+//     const response=await fetch(`${API_URL_USER}?email=${email}$password=${password}`);
+//     const data=await response.json();
+//     if(data.length===0){
+//       window.location.reload();
+//       return;
+//     }
+//     const user=data[0]
+//     console.log(user)
+//     if(user.password ==password){
+//       alert('Login successful! Redirecting...');
+//       window.location.href = '../public/wather.html';
+//       return;
+//     }else{
+//       alert("Invalid password . please try again.")
+//     }
+//     alert("sucessfull")
+//   }catch(error){
+//     alert("try again")
+//   }
+// }
 
 // Handle form submission
 form.addEventListener('submit', (e: Event) => {

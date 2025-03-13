@@ -1,9 +1,31 @@
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> week-5
 const API_URL = "http://localhost:3000";
 const API_URL_USER = `${API_URL}/users`;
 
 
+<<<<<<< HEAD
+document.addEventListener("DOMContentLoaded",function () {
+  const Login_Form = document.getElementById('loginFormElement')  ;
+  let UserEmail = document.getElementById("login-username")   ;
+  let UserPassword = document.getElementById("login-password") ;
+
+  Login_Form.addEventListener('submit',async function (e) {
+    e.preventDefault(); // Prevent form from refreshing
+    const btn=document.getElementById("button")
+    //check for empty fields
+    // console.log(UserEmail.value)
+  if (UserEmail.value.trim()=== "" || UserPassword.value.trim()=== "") {
+      // alert("Please fill in both fields");
+      btn.disabled=true;
+      return;
+      
+    }else{
+      btn.disabled=false;
+=======
 
 document.addEventListener("DOMContentLoaded",function () {
   const Login_Form = document.getElementById('loginFormElement');
@@ -17,6 +39,7 @@ document.addEventListener("DOMContentLoaded",function () {
   if (UserEmail.value.trim()=== "" || UserPassword.value.trim()=== "") {
       alert("Please fill in both fields");
       return;
+>>>>>>> week-5
     }
     //Email Validations 
     const emailPatr = /^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z]+\.(com)$/;
@@ -24,10 +47,14 @@ document.addEventListener("DOMContentLoaded",function () {
    if (!emailPatr.test(UserEmail.value.trim())) {
      alert("Please enter a valid email (e.g., example@domain.com)");
      return;
+<<<<<<< HEAD
+}    
+=======
 }
 
 
     
+>>>>>>> week-5
     // Fetch user data
    await FetchDataFrom(UserEmail.value.trim(), UserPassword.value.trim());
   })
@@ -68,7 +95,11 @@ async function FetchDataFrom(email,password) {
 }
 
 
+<<<<<<< HEAD
+//////modal data 
+=======
 //////modal data
+>>>>>>> week-5
 //store the data 
 const employeeForm=document.getElementById("employeeForm")
 employeeForm.addEventListener('submit',function(e){
@@ -160,6 +191,12 @@ function handleFormSubmission(){
 function clearErrors( ) {
   const errorId=['firstError',"lastError",'emailError','phoneError','passwordError']
   errorId.forEach(id=>{
+<<<<<<< HEAD
+    document.getElementById(id).textContent="";
+  });
+}
+=======
     document.getElementById(id).textContent=""
   });
   }
+>>>>>>> week-5

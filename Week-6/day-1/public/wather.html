@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-gray-800 text-white flex justify-center items-center min-h-screen">
+
+    <div class="bg-gradient-to-br from-gray-300 to-gray-400 p-8 rounded-2xl shadow-lg max-w-6xl w-full">
+
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-8">
+            <div class="relative w-2/3">
+                <input type="text"  id="Search" placeholder="Search for your preferred city..." class="w-full p-3 rounded-full text-black">
+            </div>
+            <div>
+                <i id="heart" class="fa-solid fa-heart text-red-500 text-[50px]"></i>
+                <!-- <i class="fa-sharp fa-solid fa-heart"></i> -->
+            </div>
+            
+            <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 ">
+                <span class="font-medium text-gray-600 dark:text-gray-300 ">JL</span>
+            </div>
+
+            <!-- <button class="bg-green-500 text-white px-6 py-2 rounded-full">Current Location</button> -->
+        </header>
+
+        <!-- Main Weather Info -->
+        <section class="grid grid-cols-2 gap-8">
+            <!-- Time and Location -->
+            <div class="bg-white text-black p-6 rounded-2xl shadow">
+                <h2 class="text-2xl font-bold">Athens</h2>
+                <p class="text-6xl font-bold my-2">09:03</p>
+                <p class="text-lg">Thursday, 31 Aug</p>
+            </div>
+
+            <!-- Weather Stats -->
+            <div class="bg-white text-black p-6 rounded-2xl shadow flex flex-col justify-between">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-4xl font-bold">24°C</p>
+                        <p>Feels like: <strong>22°C</strong></p>
+                    </div>
+                    <div class="text-yellow-500 text-6xl">☀️</div>
+                </div>
+                <div class="mt-4 text-sm">
+                    <p id="Sunset">🌅 Sunrise: 06:37 AM</p>
+                    <p id="Sunrise">🌇 Sunset: 20:37 PM</p>
+                </div>
+                <div class="grid grid-cols-4 gap-2 mt-4 text-center">
+                    <p>💨 2 km/h</p>
+                    <p>💧 41% Humidity</p>
+                    <p>📈 997 hPa</p>
+                    <p>🧴 8 UV</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forecasts -->
+        <section class="grid grid-cols-2 gap-8 mt-8">
+            <!-- 5 Days Forecast -->
+            <div class="bg-white text-black p-6 rounded-2xl shadow">
+                <h3 class="text-xl font-bold mb-4">5 Days Forecast:</h3>
+                <ul class="space-y-2">
+                    <li>🌥️ 20°C - Friday, 1 Sep</li>
+                    <li>⛅ 22°C - Saturday, 2 Sep</li>
+                    <li>☀️ 27°C - Sunday, 3 Sep</li>
+                    <li>🌧️ 18°C - Monday, 4 Sep</li>
+                    <li>🌨️ 16°C - Tuesday, 5 Sep</li>
+                </ul>
+            </div>
+
+            <!-- Hourly Forecast -->
+            <div class="bg-white text-black p-6 rounded-2xl shadow">
+                <h3 class="text-xl font-bold mb-4">Hourly Forecast:</h3>
+                <div class="grid grid-cols-5 gap-4">
+                    <div class="bg-yellow-300 p-4 rounded-lg text-center">
+                        <p class="font-bold">12:00</p>
+                        <p>☀️ 26°C</p>
+                        <p>💨 3 km/h</p>
+                    </div>
+                    <div class="bg-yellow-300 p-4 rounded-lg text-center">
+                        <p class="font-bold">15:00</p>
+                        <p>☀️ 27°C</p>
+                        <p>💨 2 km/h</p>
+                    </div>
+                    <div class="bg-yellow-300 p-4 rounded-lg text-center">
+                        <p class="font-bold">18:00</p>
+                        <p>⛅ 27°C</p>
+                        <p>💨 2 km/h</p>
+                    </div>
+                    <div class="bg-indigo-400 p-4 rounded-lg text-center text-white">
+                        <p class="font-bold">21:00</p>
+                        <p>🌥️ 25°C</p>
+                        <p>💨 3 km/h</p>
+                    </div>
+                    <div class="bg-indigo-600 p-4 rounded-lg text-center text-white">
+                        <p class="font-bold">00:00</p>
+                        <p>☀️ 22°C</p>
+                        <p>💨 2 km/h</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <!-- <script src="../dist/types.js"></script> -->
+    <script src="../dist/weather.js"></script>
+</body>
+</html>

@@ -1,6 +1,8 @@
 {
   "users": [
     {
+<<<<<<< HEAD
+=======
       "id": "f2bb",
       "fname": "Niharika",
       "lname": "Malik",
@@ -17,6 +19,7 @@
       }
     },
     {
+>>>>>>> week-5
       "id": "bb1a",
       "fname": "sjdbvjdkbv",
       "lname": "knsfcfskdnv",
